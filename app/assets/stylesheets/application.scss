@@ -131,8 +131,8 @@
       .Form{
         display: flex;
         justify-content: space-between;
-      }
-        .Form__contents{
+
+        &__contents{
           width: 100%;
           background-color: #fff;
           position: relative;
@@ -155,7 +155,7 @@
             .test{
               display: none;
             }
-        .Form__submitBtn{
+        &__submitBtn{
           color: #fff;
           background-color: #38aef0;
           font-size: 16px;
@@ -164,3 +164,4 @@
           padding: 0 30px;
           border: none;
         }
+      }
