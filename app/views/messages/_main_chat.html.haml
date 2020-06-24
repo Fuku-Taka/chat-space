@@ -1,0 +1,30 @@
+.main_chat
+  .group-info
+    .groupInfo
+      .groupName
+        name
+      .memberList
+        Member：
+        .member
+        name
+    .editButton
+      Edit
+  .message-list
+    .messageBox
+      .messageInfo
+        .messageInfo
+          .messageI-User
+            name
+          .messageI-Date
+            date
+      .message
+        message
+  .message-form
+    %form.Form
+      .Form__contents
+        %input.Form__inputContent{"placeholder": "type a message", "type": "text"}
+        %label.Form__inputImage
+          .FormIcon
+            = icon('fas', 'image')
+          %input.test{type: "file"}
+      %input.Form__submitBtn{"name": "commit", "type": "submit", "value": "Send"}
