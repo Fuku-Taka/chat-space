@@ -1,13 +1,15 @@
 .side_bar
   .user-name
     .top-items
-      .name
-        name
+      %h3.name
+        = current_user.name
       .icons
         .icon
-          = icon('far', 'edit')
+          = link_to '#' do
+            = icon('far', 'edit')
         .icon
-          = icon('fas','cog')
+          = link_to edit_user_path(current_user) do
+            = icon('fas','cog')
   .group-list
     .group
       .group-name
