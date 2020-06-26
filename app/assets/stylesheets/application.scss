@@ -2,6 +2,8 @@
 @import "modules/messages";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "modules/user";
+@import "modules/flash";
 
 .wrapper{
   display: flex;
@@ -34,10 +36,17 @@
         .icons{
           display: flex;
           justify-content: end;
-        }
+
           .icon{
             margin-left: 5px;
+
+            a{
+              color: white;
+            }
+            
           }
+
+        }
 
     .group-list{
       height: calc(100vh - 100px);
