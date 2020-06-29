@@ -4,6 +4,7 @@
 @import "font-awesome";
 @import "modules/user";
 @import "modules/flash";
+@import "modules/group";
 
 .wrapper{
   display: flex;
@@ -13,7 +14,11 @@
     height: 100vh;
     width: 300px;
     background-color: #253141;
-  }
+    
+    a{
+      color: white;
+    }
+
     .user-name{
       height: 100px;
       background-color: #253141;
@@ -21,6 +26,7 @@
       display: flex;
       align-items: center;
     }
+  }
       .top-items{
         height: 20px;
         width: 260px;
@@ -38,12 +44,7 @@
           justify-content: end;
 
           .icon{
-            margin-left: 5px;
-
-            a{
-              color: white;
-            }
-            
+            margin-left: 5px;            
           }
 
         }
