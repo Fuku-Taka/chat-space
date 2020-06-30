@@ -53,11 +53,16 @@
       height: calc(100vh - 100px);
       background-color: #2f3e51;
       padding: 0 20px;
+      overflow: scroll;
     }
       .group{
         color: white;
         font-weight: bold;
         padding: 20px 0 40px;
+
+        a{
+          text-decoration: none;
+        }
       }
         .group-name{
           font-size: 15px;
@@ -104,11 +109,17 @@
         border: 1px solid #38aef0;
         line-height: 40px;
         padding: 0 20px;
+
+        a{
+          color: #38aef0;
+          text-decoration: none;
+        }
       }
     .message-list{
       height: calc(100vh - 100px - 90px);
       background-color: #fafafa;
       padding: 35px 40px 0;
+      overflow: scroll;
     }
       .messageBox{
         display: block;
@@ -132,6 +143,10 @@
           font-size: 14px;
           margin-top: 12px;
         }
+
+          .Message__image{
+            height: 300px;
+          }
 
     .message-form{
       height: 90px;
@@ -158,14 +173,14 @@
             position: absolute;
             right: 10px;
           }
-            .FormIcon{
+            .Form__icon{
               line-height: 50px;
               font-size: 25px;
             }
             .test{
               display: none;
             }
-        &__submitBtn{
+        &__submit{
           color: #fff;
           background-color: #38aef0;
           font-size: 16px;

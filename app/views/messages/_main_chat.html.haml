@@ -2,29 +2,26 @@
   .group-info
     .groupInfo
       .groupName
-        name
+        = @group.name
       .memberList
         Member：
-        .member
-        name
+        - @group.users.each do |user|
+          = user.name
     .editButton
-      Edit
+      = link_to 'Edit', edit_group_path(@group)
   .message-list
-    .messageBox
-      .messageInfo
-        .messageInfo
-          .messageI-User
-            name
-          .messageI-Date
-            date
-      .message
-        message
+    = render @messages
+        
   .message-form
-    %form.Form
+    = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
       .Form__contents
-        %input.Form__inputContent{"placeholder": "type a message", "type": "text"}
-        %label.Form__inputImage
-          .FormIcon
-            = icon('fas', 'image')
-          %input.test{type: "file"}
-      %input.Form__submitBtn{"name": "commit", "type": "submit", "value": "Send"}
+        = f.text_field :content, class: 'Form__inputContent', placeholder: 'type a message'
+        = f.label :image, class: 'Form__inputImage' do
+          = icon('far', 'image', class: 'Form__icon')
+          = f.file_field :image, class: 'test'
+      = f.submit 'Send', class: 'Form__submit'
+
+
+
+
+ 
