@@ -2,7 +2,7 @@ $(function(){
   function buildHTML(message){
     if( message.image ) {
       let html =
-        `<div class="messageBox">
+        `<div class="messageBox" data-message-id=${message.id}>
           <div class="messageInfo">
             <div class="messageI-User">
               ${message.user_name}
@@ -21,21 +21,21 @@ $(function(){
       return html;
     } else {
       let html =
-        `<div class="messageBox">
-          <div class="messageInfo">
-            <div class="messageI-User">
-              ${message.user_name}
-            </div>
-            <div class="messageI-Date">
-              ${message.created_at}
-            </div>
+      `<div class="messageBox" data-message-id=${message.id}>
+        <div class="messageInfo">
+          <div class="messageI-User">
+            ${message.user_name}
           </div>
-          <div class="message">
-            <p class="Message__content">
-              ${message.content}
-            </p>
+          <div class="messageI-Date">
+            ${message.created_at}
           </div>
-        </div>`
+        </div>
+        <div class="message">
+          <p class="Message__content">
+            ${message.content}
+          </p>
+        </div>
+      </div>`
       return html;
     };
   }
@@ -55,13 +55,13 @@ $(function(){
     .done(function(data){
       let html = buildHTML(data);
       $('.message-list').append(html);
-      $('.message-list').animate({ scrollTop: $('.message-list')[0].scrollHeight});
       $('form')[0].reset();
+      $('.message-list').animate({ scrollTop: $('.message-list')[0].scrollHeight});
       $('.Form__submit').prop('disabled', false);
     })
     .fail(function(){
       alert("メッセージ送信に失敗しました");
       $('.Form__submit').prop('disabled', false);
-    })
+    });
   });
 });
