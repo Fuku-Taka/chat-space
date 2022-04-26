@@ -2,12 +2,10 @@ app_path = File.expand_path('../../../', __FILE__)
 
 worker_processes 1
 working_directory "#{app_path}/current"
-
 listen "#{app_path}/shared/tmp/sockets/unicorn.sock"
 pid "#{app_path}/shared/tmp/pids/unicorn.pid"
 stderr_path "#{app_path}/shared/log/unicorn.stderr.log"
 stdout_path "#{app_path}/shared/log/unicorn.stdout.log"
-
 timeout 60
 
 preload_app true
@@ -26,7 +24,7 @@ before_fork do |server, worker|
   end
 
   old_pid = "#{server.config[:pid]}.oldbin"
-  
+
   if File.exist?(old_pid) && server.pid != old_pid
     begin
       sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
