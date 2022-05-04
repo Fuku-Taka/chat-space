@@ -1,20 +1,19 @@
-# ../が一つ増えている
-app_path = File.expand_path('../../../', __FILE__)
+app_path = File.expand_path('../../', __FILE__)
 
 worker_processes 1
-# currentを指定
-working_directory "#{app_path}/current"
 
-# それぞれ、sharedの中を参照するよう変更
-listen "#{app_path}/shared/tmp/sockets/unicorn.sock"
-pid "#{app_path}/shared/tmp/pids/unicorn.pid"
-stderr_path "#{app_path}/shared/log/unicorn.stderr.log"
-stdout_path "#{app_path}/shared/log/unicorn.stdout.log"
+working_directory app_path
 
-#Railsアプリケーションの応答を待つ上限時間を設定
+#lsten 3000
+listen "#{app_path}/tmp/sockets/unicorn.sock"
+
+pid "#{app_path}/tmp/pids/unicorn.pid"
+
+stderr_path "#{app_path}/log/unicorn.stderr.log"
+
+stdout_path "#{app_path}/log/unicorn.stdout.log"
+
 timeout 60
-
-#以下は応用的な設定なので説明は割愛
 
 preload_app true
 GC.respond_to?(:copy_on_write_friendly=) && GC.copy_on_write_friendly = true
@@ -32,6 +31,7 @@ before_fork do |server, worker|
   end
 
   old_pid = "#{server.config[:pid]}.oldbin"
+
   if File.exist?(old_pid) && server.pid != old_pid
     begin
       sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
